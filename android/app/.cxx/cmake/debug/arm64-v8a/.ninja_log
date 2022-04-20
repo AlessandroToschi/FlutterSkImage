@@ -1,0 +1,21 @@
+# ninja log v5
+0	151	1650378754	CMakeFiles/ffi.dir/app/src/c_header.cpp.o	af28967211e7ac9b
+151	403	1650378754	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi.so	674cb60b98a3d27f
+0	118	1650382132	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+118	182	1650382132	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+0	172	1650383767	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+172	234	1650383767	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+0	116	1650384574	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+116	173	1650384574	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+1	134	1650384963	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+134	196	1650384963	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+0	118	1650385198	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+118	175	1650385198	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+1	118	1650446269	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+118	176	1650446269	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+0	128	1650446713	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+129	182	1650446713	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+1	128	1650447424	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+129	189	1650447424	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e
+1	132	1650447474	CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o	1e9fc047f2dd398c
+132	187	1650447474	/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi_bridge.so	9048c1a65aa5fc5e

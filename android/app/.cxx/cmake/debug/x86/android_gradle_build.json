@@ -1,0 +1,43 @@
+{
+  "stringTable": {
+    "0": "/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/x86",
+    "1": "--target=i686-none-linux-android16 --gcc-toolchain=/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dffi_bridge_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "/Users/aleto/Documents/plexagon/FlutterSkImage/android/CMakeLists.txt",
+    "/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/aleto/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/x86\" clean"
+  ],
+  "buildTargetsCommand": "/Users/aleto/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "ffi_bridge-Debug-x86": {
+      "buildCommand": "/Users/aleto/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/x86\" ffi_bridge",
+      "buildType": "debug",
+      "toolchain": "3946839720",
+      "abi": "x86",
+      "artifactName": "ffi_bridge",
+      "files": [
+        {
+          "src": "/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/src/main/cpp/ffi_bridge.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "/Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/x86/libffi_bridge.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "3946839720": {
+      "cppCompilerExecutable": "/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
