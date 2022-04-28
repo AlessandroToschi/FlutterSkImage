@@ -1,3 +1,0 @@
-/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
-/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/ffi_bridge.dir

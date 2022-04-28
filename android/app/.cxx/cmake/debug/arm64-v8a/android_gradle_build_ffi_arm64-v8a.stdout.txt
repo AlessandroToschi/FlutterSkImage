@@ -1,7 +1,0 @@
-ninja: Entering directory `/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/arm64-v8a'
-[1/2] Building CXX object CMakeFiles/ffi.dir/app/src/c_header.cpp.o
-../../../../src/c_header.cpp:30:15: warning: cast to 'const void *' from smaller integer type 'int' [-Wint-to-void-pointer-cast]
-    t1->ptr = (const void*)textureId;
-              ^
-1 warning generated.
-[2/2] Linking CXX shared library /Users/aleto/Documents/plexagon/FlutterSkImage/build/app/intermediates/cmake/debug/obj/arm64-v8a/libffi.so

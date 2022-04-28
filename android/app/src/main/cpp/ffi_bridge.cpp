@@ -56,7 +56,7 @@ extern "C" __attribute__((visibility("default"))) __attribute__((used))
 p_result multiple_textures_bridge() {
 
     JNIEnv* currentEnv;
-    currentJvm->AttachCurrentThread(&currentEnv, nullptr);
+    currentJvm->GetEnv((void**)&currentEnv, JNI_VERSION_1_4);
 
     auto result = (jintArray)currentEnv->CallObjectMethod(mainActivityInstance, getTextureIDMethod);
     //int textureID = currentEnv->CallIntMethod(currentEnv->GetObjectArrayElement(result, 0), intValue);
@@ -76,7 +76,7 @@ p_result multiple_textures_bridge() {
     p_result p{};
     p.textures = t1;
     p.length = 1;
-    currentJvm->DetachCurrentThread();
+
     return p;
 }
 

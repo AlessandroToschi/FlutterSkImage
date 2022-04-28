@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/.cxx/cmake/debug/x86_64",
-  "command": "/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/aleto/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dffi_bridge_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/ffi_bridge.dir/app/src/main/cpp/ffi_bridge.cpp.o -c /Users/aleto/Documents/plexagon/FlutterSkImage/android/app/src/main/cpp/ffi_bridge.cpp",
-  "file": "/Users/aleto/Documents/plexagon/FlutterSkImage/android/app/src/main/cpp/ffi_bridge.cpp"
-}
-]

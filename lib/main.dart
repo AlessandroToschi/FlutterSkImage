@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     final textures = ui.Image.fromTextures(textureDescriptors);
     image.value = textures[0];
-    image2.value = textures[1];
+    //image2.value = textures[1];
     print('TF ${DateTime.now().microsecondsSinceEpoch - startTime}');
   }
 
