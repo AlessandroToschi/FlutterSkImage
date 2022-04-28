@@ -3,33 +3,34 @@ package com.example.flutter_skimage
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.SurfaceTexture
+import android.media.ImageReader
 import android.opengl.*
-import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.Surface
-import androidx.annotation.RequiresApi
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.Player.REPEAT_MODE_ALL
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSource
 import gles.EglCore
 import gles.OffscreenSurface
 import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.android.FlutterSurfaceView
-import java.lang.Exception
 import java.lang.reflect.Array
 import java.lang.reflect.Method
 import javax.microedition.khronos.opengles.GL10
-import javax.microedition.khronos.opengles.GL11
 
 
 fun genTexture(): Int {
     return genTexture(GLES20.GL_TEXTURE_2D)
 }
 
-val genBuf = IntArray(1)
+val genBuf = IntArray(2)
 
 fun genTexture(textureType: Int): Int {
 
-
-    //GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-    GLES20.glGenTextures(1, genBuf, 0)
+    GLES20.glGenTextures(2, genBuf, 0)
 
     GLES20.glBindTexture(textureType, genBuf[0])
 
@@ -137,35 +138,36 @@ private fun calculateMethodSignature(method: Method?): String {
 
 class MainActivity() : FlutterActivity() {
 
-    val dimensions = mutableListOf<Int>()
-
-    var textureId: Int
-
-    var eglCore: EglCore? = null
-
-    var surface: OffscreenSurface? = null
-
     var eglContext: EGLContext? = null
 
     var count: Int = 0
 
+    lateinit var surfaceTexture: SurfaceTexture
+
+    lateinit var player: ExoPlayer
+
     fun getTextureID(): IntArray {
 
-        if (count == 3) {
-            GLES20.glDeleteTextures(1, genBuf, 0)
+        val currentTextureID = genBuf[count % 2]
+        //count++
+        //val nextTextureID = genBuf[count % 2]
+
+        runOnUiThread {
+            surfaceTexture.updateTexImage()
+            //surfaceTexture.detachFromGLContext()
+            //surfaceTexture.attachToGLContext(nextTextureID)
         }
 
-        count++
+        //GLES20.glDeleteTextures(1, genBuf, 0)
 
-        return listOf(textureId, dimensions[0], dimensions[1]).toIntArray()
+        return listOf(currentTextureID, 1920, 1080).toIntArray()
     }
 
     init {
+
         System.loadLibrary("ffi_bridge")
 
         loadJNI()
-
-        textureId = 0
 
     }
 
@@ -173,18 +175,51 @@ class MainActivity() : FlutterActivity() {
 
     override fun setEGLContext(eglContext: EGLContext) {
         this.eglContext = eglContext
-        this.eglCore = EglCore(eglContext, 0)
-        this.surface = OffscreenSurface(eglCore, 1, 1)
-        surface?.makeCurrent()
-        textureId = loadTexture(this, R.drawable.texture2, dimensions)
+        val eglCore = EglCore(eglContext, 0)
+        val surface = OffscreenSurface(eglCore, 1, 1)
+        surface.makeCurrent()
+        GLES20.glGenTextures(2, genBuf, 0)
+        //textureId = loadTexture(this, R.drawable.texture2, dimensions)
+
+        runOnUiThread {
+            loadPlayer()
+        }
+
     }
 
-    override fun onFlutterSurfaceViewCreated(flutterSurfaceView: FlutterSurfaceView) {
-        super.onFlutterSurfaceViewCreated(flutterSurfaceView)
+    fun loadPlayer() {
+        val uri = "android.resource://" + packageName + "/" + R.raw.video_h264_60fps
+        val dataSourceFactory = DefaultDataSource.Factory(context)
+        val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(MediaItem.fromUri(uri))
+
+        player = ExoPlayer.Builder(this).build()
+        player.addMediaSource(mediaSource)
+        player.repeatMode = REPEAT_MODE_ALL
+        player.prepare()
+
+        val eglCore = EglCore(eglContext, 0)
+        val offscreenSurface = OffscreenSurface(eglCore, 1, 1)
+        offscreenSurface.makeCurrent()
+
+        surfaceTexture = SurfaceTexture(genBuf[0])
+        val surface = Surface(surfaceTexture);
+
+        player.setVideoSurface(surface);
+        player.addListener(object : Player.Listener {
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                super.onPlaybackStateChanged(playbackState)
+                if (playbackState == Player.STATE_READY) {
+                    player.play()
+                }
+            }
+        })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
 
-
+        surfaceTexture?.release()
+    }
 
 }
 

@@ -62,7 +62,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+       _incrementCounter();
+    });
+  }
+
   void _incrementCounter() async {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      _incrementCounter();
+    });
     /*
     final res = pointerBridge();
     final texturePointer = res.pointer.address;
@@ -139,17 +150,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          children: [
-            ValueListenableBuilder<ui.Image?>(
-              valueListenable: image,
-              builder: (context, image, child) => RawImage(image: image),
-            ),
-            ValueListenableBuilder<ui.Image?>(
-              valueListenable: image2,
-              builder: (context, image, child) => RawImage(image: image),
-            ),
-          ],
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              ValueListenableBuilder<ui.Image?>(
+                valueListenable: image,
+                builder: (context, image, child) => AspectRatio(
+                  aspectRatio: (image?.width ?? 16.0) / (image?.height ?? 9.0),
+                  child: CustomPaint(
+                    painter: BlurPainter(image: image),
+                  ),
+                ),
+              ),
+              //ValueListenableBuilder<ui.Image?>(
+              //  valueListenable: image2,
+              //  builder: (context, image, child) => RawImage(image: image),
+              //),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -158,5 +177,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class BlurPainter extends CustomPainter {
+  final ui.Image? image;
+
+  BlurPainter({required this.image});
+
+  @override
+  void paint(ui.Canvas canvas, ui.Size size) {
+    final _image = image;
+    if (_image != null) {
+      final paint = Paint();
+      //paint.imageFilter = ui.ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0);
+      final _size = Size(_image.width.toDouble(), _image.height.toDouble());
+      canvas.drawImageRect(_image, Offset.zero & _size, Offset.zero & size, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
